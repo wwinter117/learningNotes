@@ -2,7 +2,7 @@
 
 个人学习笔记
 
-![[./images/head.jpeg]]
+<img src="https://gitee.com/wwinter117/learningNotes/blob/main/images/head.jpeg" />
 
 
 ## Docker
