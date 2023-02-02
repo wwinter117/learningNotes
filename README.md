@@ -2,7 +2,7 @@
 
 个人学习笔记
 
-<img src="https://gitee.com/wwinter117/learningNotes/blob/main/images/head.jpeg" />
+<img src="https://www.springboard.com/blog/wp-content/uploads/2022/09/coding-skills.jpg" />
 
 
 ## Docker
