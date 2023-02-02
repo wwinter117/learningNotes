@@ -2,7 +2,8 @@
 
 个人学习笔记
 
-![[coding-skills-800x496.jpeg]]
+![[./images/head.jpeg]]
+
 
 ## Docker
 
