@@ -3,7 +3,7 @@
 
 # learningNotes
 
-个人学习笔记，会同步发布到[个人博客](http://www.wwinter.cn/ "wwinter")，欢迎关注!
+个人学习笔记，会同步发布到[个人博客](http://www.wwinter.cn/ "wwinter")，欢迎关注! :smiley:
 
 
 <img src="https://www.springboard.com/blog/wp-content/uploads/2022/09/coding-skills.jpg" />
