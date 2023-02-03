@@ -13,13 +13,38 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Docker/Docker 快速入门/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "1cfc88e88db9d097",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Docker/Docker 快速入门/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "af1ac27729946b24",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "README.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -146,10 +171,21 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "4fcf83465951c8df",
+  "active": "af1ac27729946b24",
   "lastOpenFiles": [
+<<<<<<< HEAD
     "Docker/Docker快速入门/README.md",
     "Docker/DockerComposer/README.md",
     "README.md"
+=======
+    "images/head.jpeg",
+    "README.md",
+    "Docker/DockerComposer/README.md",
+    "www.wwinter.cn.md",
+    "Docker/Docker 概念/README.md",
+    "Docker/Docker 快速入门/README.md",
+    "Docker/Docker 实例/README.md",
+    "未命名.md"
+>>>>>>> 636a88480b6a2ac812b99e23ce421ecb9d60de39
   ]
 }
