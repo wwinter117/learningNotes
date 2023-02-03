@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 214
   },
   "right": {
     "id": "8d46c4ce7afe647d",
@@ -149,7 +149,7 @@
   "active": "4fcf83465951c8df",
   "lastOpenFiles": [
     "Docker/Docker快速入门/README.md",
-    "README.md",
-    "Docker/DockerComposer/README.md"
+    "Docker/DockerComposer/README.md",
+    "README.md"
   ]
 }
