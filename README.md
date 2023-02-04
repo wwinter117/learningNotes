@@ -2,7 +2,7 @@
 [![fork](https://gitee.com/wwinter117/springboot-in-action/badge/fork.svg?theme=dark)](https://gitee.com/wwinter117/springboot-in-action/members)
 
 
-<img src="https://gitee.com/wwinter117/pictures/blob/master/comments/pic_001.jpg"  />
+<img src="https://gitee.com/wwinter117/pictures/raw/master/comments/pic_001.jpg"  />
 
 # learningNotes
 
