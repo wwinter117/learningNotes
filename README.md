@@ -1,6 +1,9 @@
 [![star](https://gitee.com/wwinter117/springboot-in-action/badge/star.svg?theme=dark)](https://gitee.com/wwinter117/springboot-in-action/stargazers)
 [![fork](https://gitee.com/wwinter117/springboot-in-action/badge/fork.svg?theme=dark)](https://gitee.com/wwinter117/springboot-in-action/members)
 
+![[pic_001.jpg]]
+
+
 # learningNotes
 
 个人学习笔记，会同步发布到[个人博客](http://www.wwinter.cn/ "wwinter")，欢迎关注! :smiley:
