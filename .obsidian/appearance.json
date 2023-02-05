@@ -1,9 +1,3 @@
 {
-  "accentColor": "",
-<<<<<<< HEAD
-  "theme": "moonstone",
-  "baseFontSize": 10
-=======
-  "theme": "system"
->>>>>>> 636a88480b6a2ac812b99e23ce421ecb9d60de39
+  "accentColor": ""
 }
