@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Docker/Docker 快速入门/README.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 218.5
+    "width": 200
   },
   "right": {
     "id": "a69b1aa52a392d73",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Docker/Docker 快速入门/README.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Docker/Docker 快速入门/README.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Docker/Docker 快速入门/README.md"
+                "file": "README.md"
               }
             }
           }
@@ -148,8 +148,10 @@
   },
   "active": "f4918db9066eba57",
   "lastOpenFiles": [
-    "Docker/Docker 概念/README.md",
+    "Docker/Docker快速入门/README.md",
     "README.md",
-    "Docker/Docker 快速入门/README.md"
+    "Docker/Docker实例/README.md",
+    "Docker/Docker.md",
+    "Docker/Docker概念/README.md"
   ]
 }
