@@ -11,9 +11,11 @@
             "id": "f4918db9066eba57",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Pasted image 20230206192432.png"
+                "file": "README.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Pasted image 20230206192432.png",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Pasted image 20230206192432.png",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pasted image 20230206192432.png"
+                "file": "README.md"
               }
             }
           }
@@ -148,6 +150,7 @@
   "lastOpenFiles": [
     "SpringSecurity/SpringSecurity简介/README.md",
     "SpringSecurity/SpringSecurity01/README.md",
+    "Pasted image 20230206192432.png",
     "README.md",
     "Docker/Docker 快速入门/README.md",
     "Docker/Docker 概念/README.md"

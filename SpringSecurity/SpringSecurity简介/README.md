@@ -19,7 +19,9 @@
 SpringSecurity本质是一个过滤器链，重要的三个如下：
 
 **FilterSecurityInterceptor**：方法级的权限过滤器，基本位于过滤器的最底部
+
 **ExceptionTranslationFilter**：异常过滤器，用来处理在认证授权过程中抛出的异常
+
 **UsernamePasswordAuthenticationFilter**：对/login的post请求做拦截，检验表单中用户名和密码
 
 ## 过滤器是如何进行加载的？
@@ -34,7 +36,8 @@ SpringBoot对SpringSecurity提供了自动化配置方案，可以用更少的�
 
 用于自定义登录的判断逻辑，需要实现该接口
 
-在UsernamePasswordAuthenticationFilter这个过滤器中，attemptAuthentication方法接受post请求传过来的用户名和密码，然后进行验证，验证通过则调用successfulAuthentication方法，失败则调用方法successfulAuthentication；
+在UsernamePasswordAuthenticationFilter这个过滤器中，attemptAuthentication方法接受post请求传过来的用户名和密码，然后进行验证，验证通过则调用successfulAuthentication方法，失败则调用方法successfulAuthentication。
+
 如果现在我们需要用自己的数据库中的用户名和密码去验证，则需要自定义一个类继承UsernamePasswordAuthenticationFilter，然后重写attemptAuthentication方法，以及successfulAuthentication方法和unsuccessfulAuthentication方法，而attemptAuthentication方法只是接收了请求传过来的用户名和密码，查数据库需要写到UserDetailsService接口中，即**在该接口中去写查数据库中用户名和密码的逻辑代码**
 
 总结分为两步：
