@@ -160,7 +160,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
      *     
      * @param: [request, response, filterChain]  
      * @return: void  
-     **/    @Override  
+     **/    
+    @Override  
     protected void doFilterInternal(  
             HttpServletRequest request,  
             HttpServletResponse response,  
