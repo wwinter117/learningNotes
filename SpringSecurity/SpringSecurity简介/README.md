@@ -128,8 +128,164 @@
 </dependency>
 ```
 
-创建一个 `JwtAthFilter`
+创建一个 `JwtAuthFilter` ，用来拦截每一个请求，检查请求是否含有 `Jwt`
 
+```java
+package cn.wwinter.springsecurity02_jwt.config;  
+  
+import cn.wwinter.springsecurity02_jwt.service.JwtService;  
+import lombok.RequiredArgsConstructor;  
+import org.springframework.stereotype.Component;  
+import org.springframework.web.filter.OncePerRequestFilter;  
+  
+import javax.servlet.FilterChain;  
+import javax.servlet.ServletException;  
+import javax.servlet.http.HttpServletRequest;  
+import javax.servlet.http.HttpServletResponse;  
+import java.io.IOException;  
+  
+/**  
+ * 过滤器，用于检查请求中是否包含JWT token  
+ * 
+ * @Author: zhangdongdong  
+ * @CreateTime: 2023-02-07  
+ */
+@Component  
+@RequiredArgsConstructor // 用于生成包含 final 和 @NonNull 注解的成员变量的构造方法  
+public class JwtAuthFilter extends OncePerRequestFilter {  
+  
+    private JwtService jwtService;  
+  
+    /**  
+     *     
+     * @param: [request, response, filterChain]  
+     * @return: void  
+     **/    @Override  
+    protected void doFilterInternal(  
+            HttpServletRequest request,  
+            HttpServletResponse response,  
+            FilterChain filterChain) throws ServletException, IOException {  
+  
+        // 当我们进行一次调用时，需要在标头中传递JWT，该变量用于提取这个标头  
+        final String authHeader = request.getHeader("Authorization");  
+        final String jwt;  
+        final String userEmail;  
+  
+        // 开始检查JWT是否存在  
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {  
+            // 不存在，则继续执行剩下的过滤器  
+            filterChain.doFilter(request, response);  
+            return;  
+        }  
+  
+        // 标头中有Jwt，提取出来（从"Bearer"之后开始）  
+        jwt = authHeader.substring(7);  
+  
+        // TODO: 从JWT中提取出userEmail  
+        userEmail = jwtService.extractUsername(jwt);  
+  
+          
+    }  
+      
+      
+      
+}
+```
+
+`JwtService`
+
+```java
+
+
+package cn.wwinter.springsecurity02_jwt.service;  
+  
+import io.jsonwebtoken.Claims;  
+import io.jsonwebtoken.Jwts;  
+import io.jsonwebtoken.io.Decoders;  
+import io.jsonwebtoken.security.Keys;  
+import org.springframework.stereotype.Service;  
+  
+import java.security.Key;  
+import java.util.function.Function;  
+  
+/**  
+ * @Author: zhangdongdong  
+ * @CreateTime: 2023-02-07  
+ */
+@Service  
+public class JwtService {  
+  
+    private static final String SECRET_KEY = "423F4528482B4D6251655368566D597133743677397A24432646294A404E6352";  
+  
+    public String extractUsername(String token) {  
+        return extractClaim(token, Claims::getSubject);  
+    }  
+  
+    /**  
+     *  取出token中的单个声明字段  
+     */  
+    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {  
+  
+        Claims allClaims = extractAllClaims(token);  
+  
+        return claimsResolver.apply(allClaims);  
+    }  
+  
+    /**  
+     *  取出token中所有的声明字段  
+     */  
+    private Claims extractAllClaims(String token) {  
+        return Jwts  
+                .parser()  
+                .setSigningKey(getSignInKey()) // SigningKey密钥用于创建Jwt的签名部分，用于验证Jwt的发送者信息，并确保没有被更改过  
+                .parseClaimsJws(token)  
+                .getBody();  
+    }  
+  
+    /**  
+     * 生成token  
+     */    
+    public String generateToken() {  
+  
+        return null;  
+    }  
+  
+    /**  
+     *  获得SigningKey  
+     */    
+     private Key getSignInKey() {  
+        // 对我们的密钥进行解码  
+        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);  
+        // 使用hmacShaKeyFor登录算法  
+        return Keys.hmacShaKeyFor(keyBytes);  
+    }
+}
+
+```
+ ``
+引入新的依赖，从Jwt token中提取用户信息
+
+```xml
+<dependency>  
+    <groupId>io.jsonwebtoken</groupId>  
+    <artifactId>jjwt-api</artifactId>  
+    <version>0.11.5</version>  
+</dependency>  
+<dependency>  
+    <groupId>io.jsonwebtoken</groupId>  
+    <artifactId>jjwt-impl</artifactId>  
+    <version>0.11.5</version>  
+</dependency>
+<dependency>  
+    <groupId>io.jsonwebtoken</groupId>  
+    <artifactId>jjwt-jackson</artifactId>  
+    <version>0.11.5</version>  
+</dependency>
+```
+
+
+
+`SigningKey` 密钥用于创建 Jwt 的签名部分，用于验证 Jwt 的发送者信息，并确保没有被更改过，与 `Jwt` 标头中指定的登录算法结合使用
 
 
 # web权限方案
