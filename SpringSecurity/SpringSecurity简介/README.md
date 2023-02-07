@@ -6,6 +6,13 @@
 
 授权：判断用户是否有权限去做某些事情
 
+
+**身份验证的工作原理**
+
+![[Pasted image 20230207141852.png]]
+
+
+
 ## 相似产品
 
 ### shiro
@@ -48,6 +55,83 @@
 
 数据加密接口，用于对返回 `User` 对象里面密码加密
 
+# 入门案例
+
+只需要引入依赖
+
+**为什么在引入 SpringSecurity 之后就无法直接访问接口？**
+
+当程序启动时，`SpringSecurity` 第一件事就是去找安全过滤器链类型的 `Bean`，叫做 `SecurityFilterChain` 
+
+![[Pasted image 20230207142627.png]]
+
+而这个 `Bean` 被注册时：
+
+![[Pasted image 20230207135910.png]]
+
+这也就是为什么我们在引入了 `SpringSecurity` 之后无法直接访问接口，`Spring` 会自动保护所有的后端接口
+
+**那为什么会出现登录页面呢？**
+
+默认会使用 `formLogin` 的样式：
+
+![[Pasted image 20230207144725.png]]
+
+
+![[Pasted image 20230207140505.png]]
+
+**如何自定义配置类？**
+
+前面说过，当请求过来时，`spring` 第一件事就是去找 `SecurityFilterChain` ，那么我们可以创建一个类，使用 `@EnableWebSecurity` 来标识当前类是 `Security` 的配置类，替代 `Spring` 提供的 `defaultSecurityFilterChain`，然后在自定义的配置类中使用 `@Bean` 来注册一个 `SecurityFilterChain` 
+
+![[Pasted image 20230207145319.png]]
+
+我们使用了 `httpBasic` 的样式之后变成了弹窗：
+
+![[Pasted image 20230207145035.png]]
+
+**使用 postman 向后端发请求**
+
+当直接发送时，我们没有提供任何授权信息，返回401
+
+![[Pasted image 20230207145905.png]]
+可以这样提供授权信息，如下图
+
+![[Pasted image 20230207150016.png]]
+![[Pasted image 20230207150153.png]]
+但是该方式存在许多漏洞，我们可以使用 `JWT` 来替代
+
+# JWT
+
+## 原理
+
+![[Pasted image 20230207151223.png]]
+
+1. 客户端发送请求，想要访问后端 `API` 
+2. 请求被 `JwtAuthFilter` 这个过滤器拦截
+3. `JwtAuthFilter` 首先会检查请求中是否存在 `JWT`
+4. 然后 `JwtAuthFilter` 会向 `UserDetailsService` 请求用户信息，`UserDetailsService` 再去内存或者数据库等地方取用户信息，最终用户详细信息会被传回 `JwtAuthFilter` 
+5. `JwtAuthFilter` 会进行信息比对
+6. 通过之后，会更新安全上下文信息持有者 `SecurityContexHolder` ，然后调用 `FilterChain` 
+7.  `SecurityContexHolder` 会设置用户已通过身份验证，这样当我们传递到下一个过滤器时，系统才知道用户已通过身份验证
+8. 最后 `SecurityContexHolder` 会将请求转发给 `DispatcherServlet` ...
+
+## 实现
+
+引入依赖
+
+```xml
+<dependency>  
+    <groupId>io.jsonwebtoken</groupId>  
+    <artifactId>jjwt</artifactId>  
+    <version>0.9.1</version>  
+</dependency>
+```
+
+创建一个 `JwtAthFilter`
+
+
+
 # web权限方案
 
 **如何设置登陆的用户名和密码？**：
@@ -63,10 +147,43 @@ spring.security.user.password=123456
 
 第二种方式可以通过配置类
 
-
+```java
+package cn.wwinter.springsecurity_demo.config;  
+  
+import org.springframework.context.annotation.Bean;  
+import org.springframework.context.annotation.Configuration;  
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;  
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;  
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;  
+import org.springframework.security.crypto.password.PasswordEncoder;  
+  
+/**  
+ * @Author zhangdongdong  
+ * @Date 2023/2/7  
+ */
+@Configuration  
+public class SecurityConfig extends WebSecurityConfigurerAdapter {  
+    @Bean  
+    PasswordEncoder passwordEncoder() {  
+        return new BCryptPasswordEncoder();  
+    }  
+    
+    @Override  
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {  
+        // 对密码进行加密  
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();  
+        String password = passwordEncoder.encode("123456");  
+        
+        // 配置用户名和加密后的密码  
+        auth.inMemoryAuthentication().withUser("wwinter").password(password).roles("admin");  
+    }  
+}
+```
 
 还可以通过自定义编写实现类
 
+创建配置类，设置使用 `userDetailsService` 实现类
+编写实现类，返回 `User` 对象，`User` 对象有用户名、密码和操作权限
 
 
 # 微服务权限方案
