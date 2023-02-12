@@ -128,7 +128,90 @@
 </dependency>
 ```
 
-创建一个 `JwtAuthFilter` ，用来拦截每一个请求，检查请求是否含有 `Jwt`
+**创建 `User` 实体类**
+
+```java
+
+```
+
+**定义一个角色（覆盖到 `Spring Security`所需要的方法）**
+
+当 `Spring Security` 启动并设置我们的应用程序时需要使用到 `UserDetails` ，`UserDetails` 是一个接口，。。。
+这里有两种方式：
+1. 自定义一  个 `User` 类 `impliments UserDetails`
+2. 自定义一个类`MyUser` 然后 `extends User` （`User` 类已经实现了 `UserDetails` 接口）
+```java
+package cn.wwinter.springsecurity02_jwt.user;  
+  
+import lombok.AllArgsConstructor;  
+import lombok.Builder;  
+import lombok.Data;  
+import lombok.NoArgsConstructor;  
+import org.springframework.security.core.GrantedAuthority;  
+import org.springframework.security.core.userdetails.UserDetails;  
+  
+import javax.persistence.Entity;  
+import javax.persistence.GeneratedValue;  
+import javax.persistence.Id;  
+import javax.persistence.Table;  
+import java.util.Collection;  
+  
+/**  
+ * @Author: zhangdongdong  
+ * @CreateTime: 2023-02-08  
+ */
+@Data  
+@Entity  
+@Table(name = "_user")  
+@NoArgsConstructor  
+@AllArgsConstructor  
+@Builder  
+public class User implements UserDetails {  
+    @Id  
+    @GeneratedValue    
+    private Integer id;  
+  
+    private String name;  
+  
+    private String email;  
+  
+    private String password;  
+  
+    @Override  
+    public Collection<? extends GrantedAuthority> getAuthorities() {  
+        return null;  
+    }  
+  
+    @Override  
+    public String getUsername() {  
+        return null;  
+    }  
+  
+    @Override  
+    public boolean isAccountNonExpired() {  
+        return false;  
+    }  
+  
+    @Override  
+    public boolean isAccountNonLocked() {  
+        return false;  
+    }  
+  
+    @Override  
+    public boolean isCredentialsNonExpired() {  
+        return false;  
+    }  
+  
+    @Override  
+    public boolean isEnabled() {  
+        return false;  
+    }  
+}
+```
+
+
+
+**创建一个 `JwtAuthFilter` ，用来拦截每一个请求，检查请求是否含有 `Jwt`**
 
 ```java
 package cn.wwinter.springsecurity02_jwt.config;  
@@ -194,10 +277,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 ```
 
 `JwtService`
+![[Pasted image 20230209161616.png]]
 
 ```java
-
-
 package cn.wwinter.springsecurity02_jwt.service;  
   
 import io.jsonwebtoken.Claims;  
@@ -238,7 +320,7 @@ public class JwtService {
     private Claims extractAllClaims(String token) {  
         return Jwts  
                 .parser()  
-                .setSigningKey(getSignInKey()) // SigningKey密钥用于创建Jwt的签名部分，用于验证Jwt的发送者信息，并确保没有被更改过  
+                .setSigningKey(getSignInKey()) // SigningKey密钥用于创建Jwt的签名部分(第三个部分)，用于验证Jwt的发送者信息，并确保没有被更改过  
                 .parseClaimsJws(token)  
                 .getBody();  
     }  
@@ -264,7 +346,7 @@ public class JwtService {
 
 ```
  ``
-引入新的依赖，从Jwt token中提取用户信息
+引入新的依赖，从 `Jwt token` 中提取用户信息
 
 ```xml
 <dependency>  

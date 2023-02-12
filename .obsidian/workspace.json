@@ -67,7 +67,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 218.5
+    "width": 218.5,
+    "collapsed": true
   },
   "right": {
     "id": "a69b1aa52a392d73",
@@ -146,8 +147,13 @@
   },
   "active": "29f60cc2737bb753",
   "lastOpenFiles": [
+<<<<<<< HEAD
     "SpringSecurity/SpringSecurity简介/README.md",
     "images/Pasted image 20230206192432.png",
+=======
+    "images/Pasted image 20230206192432.png",
+    "SpringSecurity/SpringSecurity简介/README.md",
+>>>>>>> fc6ca439d3be1549f977ee395f8d5d4786fbfc73
     "SpringSecurity/SpringSecurity01/README.md",
     "README.md",
     "Docker/Docker 快速入门/README.md",
