@@ -13,7 +13,7 @@ Github：[springboot-in-action](https://github.com/wwinter117/springboot-in-acti
 
 建立一个数据库`security_demo01`
 
-![[Pasted image 20230206192432.png]]
+![[Pasted image 20230206192432 1.png]]
 
 总共有三张表：用户表、角色表以及用户角色关系表
 

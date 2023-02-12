@@ -9,7 +9,7 @@
 
 **身份验证的工作原理**
 
-![[Pasted image 20230207141852.png]]
+![[Pasted image 20230207141852 1.png]]
 
 
 
@@ -63,11 +63,11 @@
 
 当程序启动时，`SpringSecurity` 第一件事就是去找安全过滤器链类型的 `Bean`，叫做 `SecurityFilterChain` 
 
-![[Pasted image 20230207142627.png]]
+![[Pasted image 20230207142627 1.png]]
 
 而这个 `Bean` 被注册时：
 
-![[Pasted image 20230207135910.png]]
+![[Pasted image 20230207135910 1.png]]
 
 这也就是为什么我们在引入了 `SpringSecurity` 之后无法直接访问接口，`Spring` 会自动保护所有的后端接口
 
@@ -75,37 +75,37 @@
 
 默认会使用 `formLogin` 的样式：
 
-![[Pasted image 20230207144725.png]]
+![[Pasted image 20230207144725 1.png]]
 
 
-![[Pasted image 20230207140505.png]]
+![[Pasted image 20230207140505 1.png]]
 
 **如何自定义配置类？**
 
 前面说过，当请求过来时，`spring` 第一件事就是去找 `SecurityFilterChain` ，那么我们可以创建一个类，使用 `@EnableWebSecurity` 来标识当前类是 `Security` 的配置类，替代 `Spring` 提供的 `defaultSecurityFilterChain`，然后在自定义的配置类中使用 `@Bean` 来注册一个 `SecurityFilterChain` 
 
-![[Pasted image 20230207145319.png]]
+![[Pasted image 20230207145319 1.png]]
 
 我们使用了 `httpBasic` 的样式之后变成了弹窗：
 
-![[Pasted image 20230207145035.png]]
+![[Pasted image 20230207145035 1.png]]
 
 **使用 postman 向后端发请求**
 
 当直接发送时，我们没有提供任何授权信息，返回401
 
-![[Pasted image 20230207145905.png]]
+![[Pasted image 20230207145905 1.png]]
 可以这样提供授权信息，如下图
 
-![[Pasted image 20230207150016.png]]
-![[Pasted image 20230207150153.png]]
+![[Pasted image 20230207150016 1.png]]
+![[Pasted image 20230207150153 1.png]]
 但是该方式存在许多漏洞，我们可以使用 `JWT` 来替代
 
 # JWT
 
 ## 原理
 
-![[Pasted image 20230207151223.png]]
+![[Pasted image 20230207151223 1.png]]
 
 1. 客户端发送请求，想要访问后端 `API` 
 2. 请求被 `JwtAuthFilter` 这个过滤器拦截
