@@ -1,18 +1,22 @@
 {
   "main": {
-    "id": "715a5bd29a6ed83b",
+    "id": "1dc73e84ffb51fc0",
     "type": "split",
     "children": [
       {
-        "id": "d36408fb227c9ed3",
+        "id": "8248b4e5ac87e9a9",
         "type": "tabs",
         "children": [
           {
-            "id": "134d0230b4657bc3",
+            "id": "b522b7d9470955c8",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -21,15 +25,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "f495edd1c72a551e",
+    "id": "cd36a7fcabc8083b",
     "type": "split",
     "children": [
       {
-        "id": "a99cb29426dadde3",
+        "id": "9a6a402e99791f1e",
         "type": "tabs",
         "children": [
           {
-            "id": "786f7824239040eb",
+            "id": "17f745699399d259",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -39,7 +43,7 @@
             }
           },
           {
-            "id": "e96c8642956b98c4",
+            "id": "5c5015b7ac1eca3c",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -54,7 +58,7 @@
             }
           },
           {
-            "id": "7fc1b026b9531d6b",
+            "id": "cf804ee9a3d272ea",
             "type": "leaf",
             "state": {
               "type": "starred",
@@ -65,26 +69,23 @@
       }
     ],
     "direction": "horizontal",
-<<<<<<< HEAD
     "width": 300
-=======
-    "width": 218.5
->>>>>>> 8e147b1dbe133e436ae72b13ed526ad6c48f3756
   },
   "right": {
-    "id": "27677171c2ef009f",
+    "id": "569e047ca8184a7a",
     "type": "split",
     "children": [
       {
-        "id": "f4b623dcf0e25cb4",
+        "id": "f305a1a277ede728",
         "type": "tabs",
         "children": [
           {
-            "id": "e1269989006440a2",
+            "id": "5a72ed4d92bb4bfd",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,18 +97,19 @@
             }
           },
           {
-            "id": "b1fc5f156220d0ea",
+            "id": "47fd30c3649ec7e8",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "fbe6c8e9fc884b3d",
+            "id": "a7a315657a0da59f",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -118,11 +120,13 @@
             }
           },
           {
-            "id": "621af5bcc3951f3f",
+            "id": "b2fa0c908589360d",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "README.md"
+              }
             }
           }
         ]
@@ -142,6 +146,14 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "134d0230b4657bc3",
-  "lastOpenFiles": []
+  "active": "b522b7d9470955c8",
+  "lastOpenFiles": [
+    "SpringSecurity/SpringSecurity简介/README.md",
+    "SpringSecurity/SpringSecurity02/README.md",
+    "SpringSecurity/SpringSecurity01/README.md",
+    "Docker/Docker实例/README.md",
+    "Docker/Docker快速入门/README.md",
+    "Docker/Docker概念/README.md",
+    "README.md"
+  ]
 }
